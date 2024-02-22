@@ -1,4 +1,8 @@
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
+
+// Generar una clave secreta segura
+const secretKey = crypto.randomBytes(64).toString('hex');
 
 export const isAuth = (req, res, next) => {
   const token = req.cookies.token;
@@ -11,7 +15,7 @@ export const isAuth = (req, res, next) => {
   }
 
   // Se verifica la validez del token utilizando la misma clave secreta utilizada para firmarlo
-  jwt.verify(token, "xyz123", (err, decoded) => {
+  jwt.verify(token, secretKey, (err, decoded) => {
     // Si hay un error al verificar el token, se responde con un código de estado 401 (No autorizado)
     if (err)
       return res.status(401).json({

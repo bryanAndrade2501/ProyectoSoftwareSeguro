@@ -1,9 +1,6 @@
-import { useAuth } from "../context/AuthContext";
 import { Card } from "../components/ui";
 
 function HomePage() {
-  const data = useAuth();
-  console.log(data);
 
   return <div>
 

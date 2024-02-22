@@ -13,7 +13,7 @@ function Navbar() {
     <nav className="bg-zinc-950">
       <Container className="flex justify-between py-3">
         <Link to="/">
-          <h1 className="font-bold text-2xl">PERN Tasks</h1>
+          <h1 className="font-bold text-2xl">Project</h1>
         </Link>
 
         <ul className="flex items-center justify-center md:gap-x-1">
