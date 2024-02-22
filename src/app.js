@@ -10,6 +10,9 @@ import { pool } from "./db.js";
 
 const app = express();
 
+// Configura Express para no enviar encabezados que revelen la información de versión
+app.disable('x-powered-by');
+
 // Middlewares
 app.use(
   cors({
