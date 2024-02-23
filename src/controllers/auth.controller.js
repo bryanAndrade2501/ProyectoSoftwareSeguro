@@ -11,7 +11,6 @@ let loginAttempts = {}; // Objeto para rastrear los intentos de inicio de sesió
 
 // Función para manejar el inicio de sesión
 export const signin = async (req, res) => {
-  console.log('Dentro dle metodo sign in del back');
   const { email, password } = req.body; // Extracción del correo electrónico y la contraseña del cuerpo de la solicitud
 
   const now = Date.now(); // Obtención de la hora actual
