@@ -7,3 +7,5 @@ export const PG_PASSWORD = process.env.PG_PASSWORD || "Password1234";
 export const PG_DATABASE = process.env.PG_DATABASE || "tasksdb";
 
 export const ORIGIN = process.env.ORIGIN || "http://localhost:5173";
+
+export const secretKey = "xyz123";
