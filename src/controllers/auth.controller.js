@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"; // Importación del módulo bcrypt para el hashing de contraseñas
 import { pool } from "../db.js"; // Importación del pool de conexiones a la base de datos
 import { createAccessToken } from "../libs/jwt.js"; // Importación de la función para crear tokens de acceso JWT
-import md5 from 'md5'; // Importación de md5 para generar gravatar hashes
+import crypto from 'crypto'; // Importación de crypto para generar gravatar hashes
 
 // Constantes para el control de intentos de inicio de sesión
 const MAX_LOGIN_ATTEMPTS = 3; // Número máximo de intentos permitidos
@@ -85,7 +85,7 @@ export const signup = async (req, res, next) => {
     // Generar un hash de la contraseña utilizando bcrypt
     const hashedPassword = await bcrypt.hash(password, 10);
     // Crear un hash de Gravatar basado en el correo electrónico del usuario
-    const gravatar = `https://www.gravatar.com/avatar/${md5(email)}`;
+    const gravatar = `https://www.gravatar.com/avatar/${crypto.createHash('sha256').update(email).digest('hex')}`;
 
     // Insertar los datos del nuevo usuario en la base de datos
     const result = await pool.query(
